@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 $error="";
 
@@ -7,18 +11,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 // username and password sent from form 
 
-//proteção contra sql injection
+//proteï¿½ï¿½o contra sql injection
 //$myusername=addslashes($_POST['username']); 
 //$mypassword=addslashes($_POST['password']); 
 
 $myusername=$_POST['username']; 
 $mypassword=$_POST['password']; 
 
-$db = new SQLite3('/var/www/auth1.sqlite3',SQLITE3_OPEN_READONLY);
+$db = new SQLite3('auth1.sqlite3',SQLITE3_OPEN_READONLY);
 $db->busyTimeout(300); //para evitar database lock issues
 
 //esta propositadamente vulneravel a SQL injection
 $sqlQuery="SELECT * FROM users WHERE user='$myusername' and password='$mypassword'";
+
 $stmt = $db->prepare($sqlQuery);
 
 $results = $stmt->execute();

@@ -1,4 +1,9 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 
 if(!isset($_SESSION['login_user']))
@@ -16,6 +21,10 @@ header("Location: index.php");
 </head>
 
 <body>
+<a href="logout.php">
+    <img id="logout" src="logout.jpg"></img>
+</a>
+
 <h1><center>Welcome <?php echo $_SESSION['login_user']; ?></h1> 
 </body>
 </html>
