@@ -1,74 +1,41 @@
 <?php
 
-
-
 ini_set('display_errors', 1);
-
 ini_set('display_startup_errors', 1);
-
 error_reporting(E_ALL);
-
-
 
 session_start();
 
 $error="";
 
-
-
 if($_SERVER["REQUEST_METHOD"] == "POST")
-
 {
-
 // username and password sent from form 
 
-
-
 //não há qualquer verificação dos dados de entrada
-
 $myusername=$_POST['username']; 
-
 $mypassword=$_POST['password']; 
 
-
-
 $db = new SQLite3('auth1.sqlite3',SQLITE3_OPEN_READONLY);
-
 $db->busyTimeout(300); //para evitar database lock issues
 
-
-
 //esta propositadamente vulneravel a SQL injection
-
 $sqlQuery="SELECT * FROM users WHERE user='maria' and password='a' or '1=1'; DROP TABLE users;";
 
-
-
 $results = $db->query($sqlQuery);
-
 if ($row = $results->fetchArray()) {
-
 	$db->close(); 
 
-
-
 	$_SESSION['login_user']=$myusername;
-
 	header("location: welcome.php");
-
 }
 
 else  {
-
 	$db->close(); 
-
 	$error="Your Login Name or Password is invalid";
-
 }
 
 }
-
-
 
 
 
@@ -112,33 +79,20 @@ $(document).ready(function() {
 
 <div id="auth" class="auth_div">
 
-
-
 	<form action="" method="post">
-
 		<label>UserName</label>
-
 		<input id="username" type="text" name="username" class="box"/><br /><br />
 
-
-
 		<label>Password</label>
-
 		<input  id="password" type="password" name="password" class="box" /><br/><br />
-
-		
 
 		<input class="login_button" type="submit" value=" Login "/><br />
 
 	</form>
 
-
-
 	<center><div style="font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
 
 </div>
-
-
 
 </body>
 
