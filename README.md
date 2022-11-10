@@ -8,6 +8,7 @@ sudo systemctl stop nginx
 sudo apt install -y apache2 php libapache2-mod-php php-sqlite3 sqlite3
 
 cd /var/www/html
+
 sudo git clone https://github.com/droneipcb/injection_tests.git
 
 sudo systemctl restart apache2
