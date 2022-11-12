@@ -20,7 +20,7 @@ $db = new SQLite3('auth1.sqlite3',SQLITE3_OPEN_READONLY);
 $db->busyTimeout(300); //para evitar database lock issues
 
 //esta propositadamente vulneravel a SQL injection
-$sqlQuery="SELECT * FROM users WHERE user='maria' and password='a' or '1=1'; DROP TABLE users;";
+$sqlQuery="SELECT * FROM users WHERE user='$myusername' and password='$mypassword';";
 	
 $stmt = $db->prepare($sqlQuery);
 
