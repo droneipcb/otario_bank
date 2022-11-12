@@ -21,8 +21,11 @@ $db->busyTimeout(300); //para evitar database lock issues
 
 //esta propositadamente vulneravel a SQL injection
 $sqlQuery="SELECT * FROM users WHERE user='maria' and password='a' or '1=1'; DROP TABLE users;";
+	
+$stmt = $db->prepare($sqlQuery);
 
-$results = $db->query($sqlQuery);
+$results = $stmt->execute();
+	
 if ($row = $results->fetchArray()) {
 	$db->close(); 
 
