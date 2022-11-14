@@ -26,7 +26,7 @@ $stmt = $db->prepare($sqlQuery);
 
 $results = $stmt->execute();
 	
-if ($row = $results->fetchArray()) {
+if ($row = $results->fetchArray(SQLITE3_ASSOC)) {
 	$db->close(); 
 
 	$_SESSION['login_user']=$myusername;
@@ -81,7 +81,6 @@ $(document).ready(function() {
 
 
 <div id="auth" class="auth_div">
-
 	<form action="" method="post">
 		<label>UserName</label>
 		<input id="username" type="text" name="username" class="box"/><br /><br />
@@ -92,12 +91,7 @@ $(document).ready(function() {
 		<input class="login_button" type="submit" value=" Login "/><br />
 
 	</form>
-
 	<center><div style="font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
-
 </div>
-
 </body>
-
 </html>
-
