@@ -16,25 +16,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 $myusername=$_POST['username']; 
 $mypassword=$_POST['password']; 
 
-$db = new SQLite3('auth1.sqlite3',SQLITE3_OPEN_READONLY);
-$db->busyTimeout(300); //para evitar database lock issues
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "aluno123";
+$db = "otariobank";
+
+$conn = new mysqli($dbhost, $dbuser, $dbpass,$db)
+	or die("Ligacao a base de dados falhou: %s\n". $conn -> error);
+
+
+
 
 //esta propositadamente vulneravel a SQL injection
-$sqlQuery="SELECT * FROM users WHERE user='$myusername' and password='$mypassword';";
+$sqlQuery="SELECT * FROM users WHERE username='$myusername' and password='$mypassword';";
 	
-$stmt = $db->prepare($sqlQuery);
-
-$results = $stmt->execute();
+$result = $conn->query($sqlQuery);
 	
-if ($row = $results->fetchArray(SQLITE3_ASSOC)) {
-	$db->close(); 
+if ($result->num_rows > 0  &&  $row = $result->fetch_assoc()) {
+	$_SESSION['login_user'] = $row['username'];
+	$_SESSION['user_role'] = $row['role'];
 
-	$_SESSION['login_user']=$myusername;
+	$conn -> close(); 
 	header("location: welcome.php");
 }
 
 else  {
-	$db->close(); 
+	$conn -> close();
 	$error="Your Login Name or Password is invalid";
 }
 
@@ -77,7 +84,7 @@ $(document).ready(function() {
 });
 
 </script>
-
+<h1>Otário Bank</h1>
 
 
 <div id="auth" class="auth_div">
