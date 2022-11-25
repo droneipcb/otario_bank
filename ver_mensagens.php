@@ -63,8 +63,8 @@ $(document).ready(function() {
       
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-          echo "<p>".$row['username']." escreveu a seguinte mensagem:";
-          echo "<br><br>".$row['mensagem'];
+          echo "<p><p>".$row['username']." escreveu a seguinte mensagem:";
+          echo "<div class='message'>".$row['mensagem']."</div>";
         }
       }
 

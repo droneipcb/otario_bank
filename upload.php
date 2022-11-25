@@ -14,47 +14,42 @@ if(!isset($_SESSION['login_user']))
 
 $username = $_SESSION['login_user'];
 
-echo $_POST['mensagem'];
-echo "<br>".$username;
+echo "<br>Username: ".$username;
 
+// Caso não seja enviado nenhum ficheiro
 $target_file='not_found.txt';
 
 $error = $_FILES["fileToUpload"]["error"];
-if (!$error) {
-  $target_dir = "uploads/";
+if (!$error) { // Se não há erros, processar o ficheiro
+  $target_dir = "uploads/"; //pasta de destino
   $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
   $tempFile = $_FILES["fileToUpload"]["tmp_name"];
   $uploadOk = 1;
 
-  echo "name: ".$target_file;
-  echo "<br>";
-  echo "tmp_name: ".$_FILES["fileToUpload"]["tmp_name"];
-  echo "<br>";
-  echo "size: ".$_FILES["fileToUpload"]["size"];
-  echo "<br>";
-  echo "type: ".$_FILES["fileToUpload"]["type"];
-  echo "<br>";
-  echo "error: ".$error;
-  echo "<br>";
+  echo "<p>Nome do ficheiro destino: ".$target_file;
+  echo "<p>Nome do ficheiro temporário: ".$_FILES["fileToUpload"]["tmp_name"];
+  echo "<p>Tamanho do ficheiro: ".$_FILES["fileToUpload"]["size"];
+  echo "<p>Tipo de ficheiro: ".$_FILES["fileToUpload"]["type"];
+  echo "<p>Código de erro: ".$error;
 
 
 
   // Check if file already exists
   if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
+    echo "<p>Sorry, file already exists.";
     $uploadOk = 0;  
   }
 
 
   // Check if $uploadOk is set to 0 by an error
   if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
+    echo "<p>Sorry, your file was not uploaded.";
   // if everything is ok, try to upload file
   } else {
     if (move_uploaded_file($tempFile, $target_file)) {
-      echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+      echo "<p>The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
     } else {
-      echo "Sorry, there was an error uploading your file.";
+      echo "<p>Sorry, there was an error uploading your file.";
     }
   }
 }
@@ -65,7 +60,7 @@ if (!isset($_POST['mensagem'])) {
 }
 
 $mensagem = addslashes( $_POST['mensagem'] );
-echo "<br>".$mensagem;
+echo "<p>Mensagem: ".$mensagem;
 
 
 $dbhost = "localhost";
@@ -78,7 +73,7 @@ $conn = new mysqli($dbhost, $dbuser, $dbpass,$db)
 
 $sqlQuery="INSERT INTO mensagens (username,mensagem,uploaded_file) VALUES ('$username','$mensagem','$target_file');";
 
-echo "<br>".$sqlQuery;
+echo "<p>Query: ".$sqlQuery;
 	
 $result = $conn->query($sqlQuery);
 

@@ -42,7 +42,7 @@ $(document).ready(function() {
 </div> 
 
 <div id='conteudo'>
-    <h1> Bem Vindo <?php echo $username; ?> </h1>
+    <h1> Bem-vindo <?php echo $username; ?> </h1>
 
 </div>
 

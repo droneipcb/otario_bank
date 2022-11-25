@@ -45,16 +45,15 @@ $(document).ready(function() {
 
 <!-- Esta div corresponde ao conteudo ao lado direito do menu -->
 <div id='conteudo'>
-    <p> Envie uma mensagem ao seu gestor de conta </p>
+    <h1> Envie uma mensagem ao seu gestor de conta </h1>
     <p> Escreva a sua mensagem </p>
 
     <form action="upload.php" method="post" enctype="multipart/form-data">
         <textarea name='mensagem' id='mensagem' > </textarea>
         <p> Pode também fazer o upload de um ficheiro </p>
-        <!--<a href="logout.php"><img id="upload-img" src="upload-files.svg"></img></a> -->
 
         <input type="file" name="fileToUpload" id="fileToUpload">
-        <br><input type="submit" value="Enviar mensagem" name="submit">
+        <p><div class='center_content'><input id="submit_button" type="submit" value="Enviar mensagem" name="submit"></div>
     </form>
 
 
