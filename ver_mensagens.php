@@ -13,6 +13,15 @@ if(!isset($_SESSION['login_user']) || !isset($_SESSION['user_role'])) {
 $role = $_SESSION['user_role'];
 $username = $_SESSION['login_user'];
 
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "aluno123";
+$db = "otariobank";
+
+$conn = new mysqli($dbhost, $dbuser, $dbpass,$db)
+	or die("Ligacao a base de dados falhou: %s\n". $conn -> error);
+
+
 ?>
 
 
@@ -36,13 +45,35 @@ $(document).ready(function() {
 
 <body>
 
+<!-- Esta div corresponde ao menu do lado esquerdo -->
 <!-- Menu lateral -->
 <div id='menu_div'>
   <?php include 'menu.php';?> 
 </div> 
 
+
+<!-- Esta div corresponde ao conteudo ao lado direito do menu -->
 <div id='conteudo'>
-    <h1> Bem Vindo <?php echo $username; ?> </h1>
+    <h1> Lista de mensagens recebidas </h1>
+
+    <?php
+      $sqlQuery="SELECT * FROM mensagens;";
+	
+      $result = $conn->query($sqlQuery);
+      
+      if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+          echo "<p>".$row['username']." escreveu a seguinte mensagem:";
+          echo "<br><br>".$row['mensagem'];
+        }
+      }
+
+      $conn -> close(); 
+  
+
+    ?>
+
+
 
 </div>
 

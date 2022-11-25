@@ -43,7 +43,7 @@ p.menuitem:hover {
     text-decoration: underline;    
 }
 
-div#enviar_mensagem_div {
+div#conteudo {
     position: fixed;
     width: 500px;
     top: 0px;
@@ -75,3 +75,6 @@ textarea#mensagem {
     margin-right: auto;
 }
 
+texto#username {
+    color: white;    
+}
