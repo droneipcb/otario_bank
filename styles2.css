@@ -77,7 +77,15 @@ textarea#mensagem {
 }
 
 texto#username {
-    color: white;    
+    color: white;
+    font-size:26px;
+    margin-left: 10px;    
+    margin-top: 10px;    
+}
+
+useritem {
+    color: darkolivegreen;
+    font-size:26px;
 }
 
 div.center_content {
@@ -85,7 +93,7 @@ div.center_content {
 }
 
 div.message {
-    background-color: lightblue;
+    background-color: lightcyan;
     border-radius: 3px;
     border-style:single;
     box-shadow: 2px 2px 2px black;

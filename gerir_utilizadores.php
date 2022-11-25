@@ -62,7 +62,7 @@ $(document).ready(function() {
       
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-          echo "<p>".$row['username'];
+          echo "<p><useritem>".$row['username']."</useritem>";
           echo "&nbsp;&nbsp;&nbsp; <a href='editar_utilizador.php'>Editar</a>";
           echo "&nbsp;&nbsp;&nbsp; <a href='apagar_utilizador.php'>Apagar</a>";
         }
