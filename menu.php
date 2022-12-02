@@ -1,7 +1,7 @@
 <?php
     echo "<texto id='username'> $username </texto>";
 
-    echo "<a href='logout.php'><img id='logout' src='logout.jpg'></img></a>";
+    echo "<a href='logout.php'><img id='logout' src='logout.png'></img></a>";
     echo "<br><br><br>";
     
     echo "<a href='welcome.php'><p class='menuitem'>Home</p><a>";
