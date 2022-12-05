@@ -1,4 +1,4 @@
-# otario_bank, Pequeno website para demonstrar vulnerabilidades em aplicações Web
+# otario_bank, pequeno website para demonstrar vulnerabilidades em aplicações Web
 
 autor: Osvaldo Santos, Instituto Politécnico de Castelo Branco
 
