@@ -1,4 +1,5 @@
 # otario_bank
+# autor: Osvaldo Santos, Instituto Politécnico de Castelo Branco
 Pequeno website para demonstrar vulnerabilidades em aplicações Web
 
 Instruções para instalar o website numa VM com Uubuntu 22
