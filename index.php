@@ -84,7 +84,7 @@ $(document).ready(function() {
 });
 
 </script>
-<h1>Otário Bank</h1>
+<h1>Otário Bank version 2</h1>
 
 
 <div id="auth" class="auth_div">
